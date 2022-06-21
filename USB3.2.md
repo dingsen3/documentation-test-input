@@ -1,0 +1,1349 @@
+# USB3.2
+[[USB]] specification that supports transfer speeds up to 20 Gbits/s depending on the generation. 
+
+- [[USB3 Gen1]] - [[USB 3.0]] - USB 3.1 Gen 1 - 5gbps
+- [[USB3 Gen2]] - USB 3.1 Gen 2 - 10gbps
+- Gen 2x2 - [[dual-lane (USB)]] - 20gbps
+	- using [[Type-C USB]] cables
+
+- [[USB3.2 Gen1 Gen2 differences]] 
+
+
+For if I ever meet someone from the USB-IF:
+- [[USB 3.2 Spec Questions]] 
+
+
+Speeds:
+- [[USB 2.0 speeds]]
+- [[SS]]
+- [[SSP]]
+
+Architecture Description:
+- [[bus (USB)]]
+	- [[eSS bus]] 
+- [[USB device]]
+- [[Host (USB)]] 
+
+Data Flow:
+- [[transfer (USB)]]s 
+	- [[client (USB)]] -> [[USB device]]'s [[function (USB)]] 
+		- across a [[pipe (USB)]]
+
+Abstraction layers:
+- [[Physical Layer (USB)]]
+- [[Link Layer (USB)]]
+- [[Protocol Layer (USB)]] 
+
+Succeeded by [[USB4]] v1.0 which came out in August 2019
+
+Terms:
+- DWORD - a double word in [[USB]] is 32 bits or 4 bytes in size. 
+- [[USB 3.2 Spec Conventions]] 
+
+Resources:
+- [USB 3.2 Revision 1.0.pdf](file:///C:/Users/team/AppData/Local/Temp/Temp1_usb_32_20220218.zip/usb_32_20220218/USB%203.2%20Revision%201.0.pdf)
+- [x] Introduction
+	- [x] Background
+	- [x] Objective of Specification
+	- [x] Scope
+	>Product developers using this specification are expected to know and understand the USB 2.0 Specification. Specifically, USB 3.x devices must implement device framework commands and descriptors as defined in the USB 2.0 Specification. Devices operating at the 10 Gbps (Gen 2) speed must implement the SuperSpeedPlus enhancements defined in this version of the specification
+
+	- [x] USB Product Compliance
+		> Adopters can demonstrate compliance with the specification through the [[testing program (USB3.2)]] as defined by the USB Implementers Forum. 
+	- [x] DO
+	- [x] Design Goals
+	- [x] Related Documents
+- [ ] Find these and reference them in resources. 
+- USB Type-C™ Cable and Connector Specification, Release 1.3 
+- [x] found?
+	- This should be [[USB Type-C Specification]] mentioned in [[Configuration Lane (USB)]] definition.
+- USB 3.1 Legacy Cable and Connector Specification, Revision 1.0 (including all errata and ECNs through June 2017) 
+	- [ ] found?
+- Universal Serial Bus Specification, Revision 2.0 (including all posted errata and ECNs) 
+	- [ ] found?
+- Universal Serial Bus Micro-USB Cables and Connectors Specification, Revision 1.01 
+	- [ ] found?
+- USB On-the-Go Supplement to the USB 2.0 Specification, Revision 1.3 
+	- [ ] found?
+- USB On-the-Go and Embedded Host Supplement to the USB 3.0 Specification, Revision 1.0 
+	- [ ] found?
+- EIA-364-1000.01: Environmental Test Methodology for Assessing the Performance of Electrical Connectors and Sockets Used in Business Office Applications 
+	- [ ] found?
+- USB 3.1 Legacy Connectors and Cable Assemblies Compliance Document 
+	- [ ] found?
+- USB SuperSpeed Electrical Test Methodology white paper 
+	- [ ] found?
+- USB 3.0 Jitter Budgeting white paper
+	- [ ] found?
+- NCITS TR-35-2004, INCITS Technical Report for Information Technology – Fibre Channel – Methodologies for Jitter and Signal Quality Specification (FC-MJSQ) 
+	- [ ] found?
+- Universal Serial Bus Power Delivery Specification, Revision 3.0 Version 1.1
+	- [ ] found?
+
+#question is LFPS still sent while in [[U0]]?
+- should be no... but possibly in [[U1]], [[U2]], [[U3]]
+
+
+- [x] Get these numbered
+- [x] Conventions 
+- [x] Terms and Abbreviations
+	- [x] ACK
+		[[ACK (USB)]] 
+	- [x] ACK Tx Header Sequence Number
+	[[ACK Tx Header Sequence Number (USB)]]
+	- [x] active device
+    [[USB device]] 
+	- [x] asynchronous data
+	Data transferred with relaxed [[latency]] requirements at irregular intervals. 
+	- [x] attached
+	- [x] AWG#
+ [[AWG]]
+	- [x] [[bandwidth]] 
+	- [x] [[big endian]]
+	
+	- [x] bit
+	- [x] bps
+	- [x] Bps
+	- [x] [[buffer]] 
+	- [x] [[bulk transfer (USB)]] 
+	- [x] [[bus enumeration (USB)]] 
+	- [x] bus interval
+	- [x] bus instance
+	- [x] byte
+	- [x] cable
+	- [x] cable assembly
+	- [x] [[captive cable (USB)]] 
+	- [x] [[capability (USB)]] 
+	- [x] [[CDR]] 
+	- [x] [[characteristics (USB)]] 
+	- [x] [[client (USB)]] 
+	- [x] [[component (USB)]]
+	- [x] [[Configuration Lane (USB)]]
+	- [x] [[configuring software (USB)]]
+	- [x] [[control endpoint (USB)]] 
+	- [x] [[control pipe (USB)]] 
+	- [x] [[connected (USB)]] 
+	- [x] [[control transfer (USB)]] 
+	- [x] [[Controlling Hub (USB)]] 
+	- [x] [[CRC]] - [[CRC (USB)]]
+	- [x] Cyclic Redundancy Check
+	- [x] [[D codes (USB)]]
+	- [x] [[D+ dataline (USB)]] and [[D- dataline (USB)]]
+	- [x] [[default address (USB)]]
+	- [x] [[default pipe (USB)]]
+	- [x] [[descrambling (USB)]] 
+	- [x] detached
+	- [x] [[USB device]] 
+	- [x] device address
+	- [x] device endpoint
+	- [x] device software
+	^ literally never used as a term in the actual spec. 
+	- [x] [[DFP (USB)]]  
+	- [x] [[disconnected (USB)]] (unconnected)
+	- [x] downstream
+	- [x] downstream port
+	- [x] [[downstream sublink (USB)]] 
+	- [x] [[DP (USB)]]
+	- [x] [[DPH (USB)]]
+	- [x] [[DPP (USB)]]
+	- [x] [[DPPABORT (USB)]]
+	- [x] [[DPPEND (USB)]]
+	- [x] [[DPPSTART (USB)]]
+	- [x] [[driver (hardware)]] 
+	- [x] [[DSPORT (USB)]]
+	- [x] [[dual-simplex]]
+	- [x] DWORD
+	- [x] [[dynamic insertion and removal (USB)]] 
+	- [x] [[endpoint (USB)]] 
+	- [x] [[endpoint address (USB)]]
+	- [x] [[endpoint direction (USB)]] 
+	- [x] [[endpoint number (USB)]]
+	- [x] [[eSS]]
+	- [x] external port
+	- [x] [[frame number (USB)]] 
+	- [x] [[full-duplex]]
+	- [x] [[full-speed (USB)]] 
+	- [x] function
+	- [x] Gbps
+	- [x] Gen 1
+	- [x] Gen 2 
+	- [x] Gen X
+	- [x] Gen X x Y
+	- [x] [[handshake packet (USB)]]
+	- [x] [[HP (USB)]] 
+	- [x] [[Header Sequence Number Advertisement (USB)]]
+	- [x] [[high-speed (USB)]]
+	- [x] [[Host (USB)]]
+	- [x] [[USB Host controller]]
+	- [x] [[Hot Reset (USB)]] 
+	- [x] [[HPSTART (USB)]] 
+	- [x] [[Hub (USB)]]
+	- [x] [[HDM]] Hub Delay Measurement (HDM)
+	- [x] [[hub tier (USB)]] hub tier
+	- [x] [[ID pin (USB)]] 
+	- [x] [[Inband Reset (USB)]] 
+	- [x] informative
+	- [x] [[interrupt transfer (USB)]] 
+	- [x] isochronous data [[Isochronous (USB)]]
+	- [x] isochronous device [[isochronous device (USB)]]
+	- [x] isochronous sink endpoint [[isochronous sink endpoint (USB)]]
+	- [x] isochronous source endpoint [[isochronous source endpoint (USB)]]
+	- [x] isochronous transfer [[isochronous transfer (USB)]] [[transfer type (USB)]] 
+	- [x] ITP [[ITP (USB)]] 
+	- [x] [[jitter]] 
+	- [x] KB
+	- [x] [[K-Code (USB)]]
+		- [x] SHP
+		- [x] SDP
+		- [x] END
+		- [x] EDB
+		- [x] SLC
+		- [x] COM
+		- [x] SKP
+		- [x] EPF
+	- [x] [[lane (USB)]] 
+	- [x] [[LBPM (USB)]] 
+	- [x] [[LCSTART (USB)]] 
+	- [x] [[LDM (USB)]] 
+	- [x] [[LDM Context (USB)]] 
+	- [x] LDM [[link delay (USB)]]
+	- [x] [[LDM Requester (USB)]]
+	- [x] [[LDM Responder (USB)]]
+	- [x] [[LFPS]]
+	- [x] [[LFSR]] 
+	- [x] LI [[LI (USB)]]
+	- [x] Link [[USB link]]
+	- [x] link command [[Link Command (USB)]] 
+	- [x] Link Control Word [[Link Control Word (USB)]] 
+	- [x] Link Delay Measurement (LDM) [[LDM (USB)]] 
+	- [x] [[Link Error Count (USB)]] 
+	- [x] little endian [[Little-Endian]] 
+	- [x] LMP [[LMP (USB)]] 
+	- [x] [[Local Rx Header Buffer Credit (USB)]] 
+	- [x] Logical Idle [[LI (USB)]]
+	- [x] low-speed [[low-speed (USB)]] 
+	- [x] LSb
+	- [x] LSB
+	- [x] LTSSM [[LTSSM (USB)]] 
+	- [x] [[message pipe (USB)]]
+	- [x] MOD
+	- [x] MSb
+	- [x] MSB
+	- [x] [[normative (USB)]] 
+	- [x] NRDY [[NRDY (USB)]] 
+	- [x] packet [[packet (USB)]] 
+	- [x] peripheral [[peripheral device (USB)]] 
+	- [x] peripheral device
+	- [x] persistent [[persistent (USB)]] 
+	- [x] Phase Locked Loop
+	- [x] physical device
+	- [x] [[pipe (USB)]]
+	- [x] PLL [[PLL]] 
+	- [x] plug [[plug (USB)]]
+	- [x] port [[port (USB)]] 
+	- [x] PowerOn Reset (POR) [[Power-On Reset (USB)]] 
+	- [x] PPM [[ppm]] 
+	- [x] Precision Time Measurement [[PTM]] 
+	- [x] [[PRBS]] 
+	- [x] protocol
+	- [x] PTM 
+	- [x] PTM Clock
+	- [x] PTM Domain
+	- [x] PTM Local Time Source
+	- [x] PTM Root
+	- [x] receptacle
+	- [x] [[Remote Rx Header Buffer Credit (USB)]] 
+	- [x] request [[request (USB)]] 
+	- [x] root hub
+	- [x] root port [[root port (USB)]]
+	- [x] reserved
+	- [x] [[Rx Header Buffer Credit Advertisement (USB)]] 
+	- [x] Rx Header Sequence Number [[Rx Header Sequence Number (USB)]] 
+	- [x] Rx Port [[Rx Port (USB)]]
+	- [x] scrambling [[scrambling (USB)]]
+	- [x] SCD [[SCD (USB)]] 
+	- [x] SDP [[SDP]]
+	- [x] service interval [[service interval (USB)]]
+	- [x] service jitter [[service jitter (USB)]]
+	- [x] Soft Error Count [[soft error count (USB)]]
+	- [x] SSC [[SSC]] 
+	- [x] stage [[stage (USB)]]
+	- [x] stream endpoint [[stream endpoint (USB)]]
+	- [x] stream pipe [[stream pipe (USB)]]
+	- [x] sublink [[sublink (USB)]]
+	- [x] SuperSpeed [[SS]]
+	- [x] SuperSpeed bus instance [[SS bus]]
+	- [x] SuperSpeedPlus [[SSP]] 
+	- [x] SuperSpeedPlus bus instance [[SSP bus]]
+	- [x] synchronization type [[synchronization type (USB)]]
+	- [x] termination [[termination (USB)]] 
+	- [x] [[timeout]] 
+	- [x] [[TP (USB)]] 
+	- [x] training sequences [[training sequence (USB)]] 
+	- [x] [[transaction (USB)]]
+	- [x] transfer [[transfer (USB)]] 
+	- [x] transfer type
+	- [x] Type-A connector [[Type-A USB]] 
+	- [x] Type 1 packet [[type 1 TC (USB)]]
+	- [x] Type 2 packet [[type 2 TC (USB)]] 
+	- [x] Type 1 traffic class
+	- [x] Type 2 traffic class
+	- [x] Type 1 Rx Buffer Credit [[Type 1 Rx Buffer Credit (USB)]]
+	- [x] Type 2 Rx Buffer Credit [[Type 2 Rx Buffer Credit (USB)]]
+	- [x] Type 1 Rx Buffer Credit Advertisement [[Type 1 Type 2 Rx Buffer Credit Advertisement (USB)]]
+	- [x] Type 2 Rx Buffer Credit Advertisement [[Type 2 Rx Buffer Credit Advertisement (USB)]]
+	- [x] Tx Header Sequence Number [[Tx Header Sequence Number (USB)]] 
+	- [x] Tx Port [[Tx Port (USB)]] 
+
+	- [x] upstream [[upstream (USB)]] 
+	- [x] upstream port
+	- [x] upstream sublink
+	- [x] UFP [[UFP (USB)]] 
+	- [x] USB 3.1 Standard-A Connector [[Type-A USB]] 
+	- [x] USB 3.1 Standard-B connector [[Type-B USB]]
+	- [x] USB 3.1 Micro-A plug [[USB 3.1 Micro-A plug]] 
+	- [x] USB 3.1 Micro-AB receptacle [[USB 3.1 Micro-AB receptacle]]
+	- [x] USB 3.1 Micro-B connector [[USB 3.1 micro-b connector]] 
+	- [x] USB 3.1 Micro connector family [[USB 3.1 Micro connector family]] 
+	- [x] USB 2.0 Standard-A connector [[Standard-A Connector (USB2.0)]]
+	- [x] USB 2.0 Standard-B connector
+		- [[Standard-B Connector (USB 2.0)]] 
+	- [x] USB Type-C connector [[Type-C USB]] 
+	- [x] USB-IF [[USB-IF]] 
+	- [x] USDPORT [[USDPORT]]
+	- [x] USPORT [[USPORT]] 
+	- [x] UTP [[UTP]] 
+	- [x] [[warm reset (USB)]]
+	- [x] WORD
+- [ ] 3. Architectural Overview
+	-  [[dual-bus architecture (USB)]] 
+	- [ ] 3.1. System Description
+		- [ ] 3.1.1. Mechanical
+		- [ ] 3.1.2. Power
+		- [ ] 3.1.3. System Configuration
+		- [ ] 3.1.4. Differences with 2.0
+	- [ ] 3.2. Enhanced SuperSpeed Bus Architecture
+		- [ ] 3.2.1. Physical Layer
+			- [ ] 3.2.1.1. Gen 1 Physical layer
+			- [ ] 3.2.1.2. Gen 2 Physical layer
+			- [ ] 3.2.1.3. Dual lane operation
+		- [ ] 3.2.2. Link Layer
+		- [ ] 3.2.3. Protocol layer
+			- [ ] 3.2.3.1. SuperSpeed Protocol
+			- [ ] 3.2.3.2. SuperSpeedPlus Protocol
+		- [ ] 3.2.4. Robustness
+			- [ ] 3.2.4.1. [[Error Detection]]
+			- [ ] 3.2.4.2. Error Handling
+		- [ ] 3.2.5. Enhanced SuperSpeed Power Management
+		- [ ] 3.2.6. Devices
+			- [ ] 3.2.6.1. Peripheral Devices
+			- [ ] 3.2.6.2. Hubs
+		- [ ] 3.2.7. Hosts
+	- [ ] 3.3. Enhanced SuperSpeed Bus Data Flow Models
+- [ ] 4. Enhanced SuperSpeed Data Flow Model
+	- [ ] 4.1. Implementer Viewpoints
+	- [ ] 4.2. Enhanced SuperSpeed Communication Flow
+		- [ ] 4.2.1. Pipes
+	- [ ] 4.3. Enhanced SuperSpeed Protocol Overview
+		- [ ] 4.3.1. Differences from USB 2.0
+			- [ ] 4.3.1.1. Comparing USB 2.0 and Enhanced SuperSpeed Transactions
+			- [ ] 4.3.1.2. Introduction to Enhanced SuperSpeed Packets
+	- [ ] 4.4. Generalized Transfer Description
+		- [ ] 4.4.1. Data Burstin
+		- [ ] 4.4.2. IN Transfers
+		- [ ] 4.4.3. OUT Transfers
+		- [ ] 4.4.4. Power Management and Performance
+		- [ ] 4.4.5. Control Transfers
+			- [ ] 4.4.5.1. Control Transfers Packet Size
+			- [ ] 4.4.5.2. Control Transfer Bandwidth Requirements
+			- [ ] 4.4.5.3. Control Transfer Data Sequences
+		- [ ] 4.4.6. Bulk Transfers
+			- [ ] 4.4.6.1. Bulk Transfer Data Packet Size
+			- [ ] 4.4.6.2. Bulk Transfer Bandwidth Requirements
+			- [ ] 4.4.6.3. Bulk Transfer Data Sequences
+			- [ ] 4.4.6.4. Bulk Streams
+		- [ ] 4.4.7. [[Interrupt]] transfers
+			- [ ] 4.4.7.1. Interrupt Transfer Packet Size
+			- [ ] 4.4.7.2. Bandwidth Req
+			- [ ] 4.4.7.3. Data Seq
+		- [ ] 4.4.8. Isochronous Transfers
+			- [ ] 4.4.8.1. Packet Size
+			- [ ] 4.4.8.2. Bandwidth Req
+			- [ ] 4.4.8.3. Data Seq
+			- [x] 4.4.8.4. Special considerations
+				- [x] 4.4.8.4.1. [[explicit feedback (USB)]]
+				
+		- [x] 4.4.9. Device notifications [[notification (USB)]]s 
+		- [x] 4.4.10. Reliability  [[reliability (USB)]] 
+			- [x] 4.4.10.1. Physical Layer
+			- [x] 4.4.10.2. Link Layer
+			- [x] 4.4.10.3. Protocol Layer
+		- [x] 4.4.11. Efficiency
+			- [[efficiency (USB3.2)]] 
+- [x] 5. Mechanical
+	- [ ] Find the Legacy spec, but I wouldn't worry about this todo item too much
+- [ ] 6. [[Physical Layer (USB)]] 
+	- [x] 6.1. Physical Layer Overview
+	- [x] 6.2. Functions
+		- [x] 6.2.1. Measurement
+		- [x] 6.2.2. Channel
+	- [x] 6.3. Symbol Encoding
+		- [x] 6.3.1. Gen 1 Encoding
+			- [x] 6.3.1.1. Serdes of Data
+			- [x] 6.3.1.2. 8b/10b decode rules
+			- [x] 6.3.1.3. Gen 1 data scrambling
+			- [x] 6.3.1.4. 8b/10b Decode Errors for Gen 1 operation
+		- [x] 6.3.2. Gen 2 Encoding
+			- [x] 6.3.2.1. Serdes
+			- [x] 6.3.2.2. 128b/132b decode rules
+			- [x] 6.3.2.3. Data scrambling for Gen 2 oepration
+			- [x] 6.3.2.4. 128b/132b Decode errors
+		- [x] 6.3.3. Framing and Link Management Symbols
+	- [ ] 6.4. Link Initilization and Training
+		- [x] 6.4.1. Link Training
+		- [[link training (USB)]]
+			- [x] 6.4.1.1. Gen1
+			- [x] 6.4.1.2. Gen2
+		- [x] 6.4.2. Lane Polarity
+			- [x] 6.4.2.1. Gen1
+			- [x] 6.4.2.2. Gen2
+		- [ ] 6.4.3. Elasticity Buffer and SKP Ordered Set
+			- [ ] 6.4.3.1. SKP Rules for Gen 1x1
+			- [ ] 6.4.3.2. SKP Rules for Gen1x2
+			- [ ] 6.4.3.3. SKP Rules for Gen2
+		- [ ] 6.4.4. Compliance Pattern
+			- [ ] 6.4.4.1. Gen 2 Compliance Pattern CP9
+	- [ ] 6.5. Clock and Jitter
+		- [ ] 6.5.1. Informative Jitter Budgeting
+		- [ ] 6.5.2. Normative Clock Recovery Function
+		- [ ] 6.5.3. Normative Spread Spectrum Clocking
+		- [ ] 6.5.4. Normative Slew Rate Limit
+		- [ ] 6.5.5. Reference Clock Requirements
+	- [ ] 6.6. Signaling
+		- [ ] 6.6.1. Eye Diagrams
+		- [ ] 6.6.2. Voltage Level Definitions
+		- [ ] 6.6.3. Tx and Rx Input Parasitics
+	- [ ] 6.7. Transmitter Specs
+		- [ ] 6.7.1. Transmitter Electrical Parameters
+		- [ ] 6.7.2. Low Power Transmitter
+		- [ ] 6.7.3. Transmitter Eye
+		- [ ] 6.7.4. Tx Compliance Reference Receiver Equalizer Function
+		- [ ] 6.7.5. Transmitter De-emphasis
+			- [ ] 6.7.5.1. Gen 1 (5GT/s)
+			- [ ] 6.7.5.2. Gen 2 (10GT/s)
+		- [ ] 6.7.6. Entry into Elecitrcal Idle U1
+	- [ ] 6.8. Receiver Specs
+		- [ ] 6.8.1. Receiver Equalization training
+		- [ ] 6.8.2. Informative Receiver CTLE Function
+			- [ ] 6.8.2.1.  Gen 1 Reference CTLE
+			- [ ] 6.8.2.2. Gen 2 Reference Equalizer Function
+		- [ ] 6.8.3. Receiver Electrical Parameters
+		- [ ] 6.8.4. Receiver Loopback
+			- [ ] 6.8.4.1. Loopback BERT for Gen 1 Operation
+		- [ ] 6.8.5. Normative Receiver Tolerance Compliance Test
+	- [x] 6.9. Lower Frequency Periodic Signaling (LFPS)
+		- [x] 6.9.1. LFPS Signal Definition
+		- [x] 6.9.2. Example LFPS Handshake for U1/U2 Exit, Loopback Exit, and U3 Wakeup
+		- [x] 6.9.3. Warm Reset
+		- [x] 6.9.4. SuperSpeedPlus Capability Declaration
+			- [x] 6.9.4.1. Binary Representation of Polling LFPS
+			- [x] 6.9.4.2. SCD1/SCD2 Definition and Transmission
+		- [x] 6.9.5. SuperSpeedPlus LFPS Based PWM Message (LBPM)
+			- [x] 6.9.5.1. Introduction to LFPS Based PWM Signaling (LBPS)
+			- [x] 6.9.5.2. LBPM Definition and Transmission
+	- [ ] 6.10. Transmitter and Receiver DC Specs
+		- [ ] 6.10.1. Informative ESD Protection
+		- [ ] 6.10.2. Informative Short Circuit Requirements
+		- [ ] 6.10.3. Normative High Impedance Reflections
+	- [ ] 6.11. Receiver Detection
+		- [ ] 6.11.1. Rx Detect Overview
+		- [ ] 6.11.2. Rx Detect Sequence
+		- [ ] 6.11.3. Upper Limit on Channel Capacitance
+	- [x] 6.12. Re-timers -- 
+		- #rant literally just tells you to read appendix E
+	- [ ] 6.13. Dual-lane Requirements
+		- [ ] 6.13.1. Operation
+		- [ ] 6.13.2. Capability Determination
+		- [ ] 6.13.3. Lane Numbering
+		- [ ] 6.13.4. Data Striping
+		- [ ] 6.13.5. Data Scrambling
+		- [ ] 6.13.6. Ordered Set Rules
+		- [ ] 6.13.7. Lane Polarity Inversion
+		- [ ] 6.13.8. Lane-to-Lane Skew
+		- [ ] 6.13.9. Compliance Patterns
+		- [ ] 6.13.10. Receiver Detection
+		- [ ] 6.13.11. Receiver Loopback
+		- [ ] 6.13.12. LFPS
+		- [ ] 6.13.13. Ux Exit
+- [ ] 7. Link Layer
+	- [x] 7.1. Byte Ordering
+		- [x] 7.1.1. Gen 1 Line Code
+		- [x] 7.1.2. Gen 2 Line Code
+	- [ ] 7.2. Link Management and [[flow control (USB)]] 
+	- [[Link Management (USB)]] 
+		- [x] 7.2.1. [[packet (USB)]]  and [[packet framing (USB)]] 
+			- [x] 7.2.1.1. [[HP (USB)]] Structure
+				- [x] 7.2.1.1.1. [[header packet framing (USB)]]
+				- [x] 7.2.1.1.2. packet header
+				- [x] 7.2.1.1.3. [[Link Control Word (USB)]]
+			- [x] 7.2.1.2. Data Packet Payload Structure
+				- [x] 7.2.1.2.1. Data Packet Payload Framing [[DPP Framing (USB)]] 
+				- [x] 7.2.1.2.2. Data Packet Payload
+				- [x] 7.2.1.2.3. Data Payload Structure and Spacing Between DPH and DPP
+			- [x] 7.2.1.3. Gen 2 Packet Placement
+		- [x] 7.2.2.  [[Link Command (USB)]]s
+			- [x] 7.2.2.1. Link Command Structure
+			- [x] 7.2.2.2. Link Command Word Definition
+			- [x] 7.2.2.3. Link Command Placement
+		- [x] 7.2.3. Logical Idle [[LI (USB)]] 
+		- [ ] 7.2.4. Link Command Usage for [[Flow Control]], Error Recovery, and [[Power Management]]
+			- [ ] 7.2.4.1. Header Packet Flow Control and Error Recovery
+				- [x] 7.2.4.1.1. Initialization [[Link initialization (USB)]] 
+				- [x] 7.2.4.1.2. General Rules of [[LGOOD_n (USB)]] and [[LCRD_x (USB)]] usage
+				- [x] 7.2.4.1.3. Transmitting Packets
+				- [x] 7.2.4.1.4. Deferred DPH
+				- [x] 7.2.4.1.5. [[receiving HP (USB)]]
+				- [x] 7.2.4.1.6. [[receiving DPH in Gen 2 (USB)]] Operation
+				- [x] 7.2.4.1.7. SS [[Rx Header Buffer Credit (USB)]] 
+				- [x] 7.2.4.1.8. SSP [[Type 1 Rx Buffer Credit (USB)]] / [[Type 2 Rx Buffer Credit (USB)]] 
+				- [x] 7.2.4.1.9. [[Receiving DPP (USB)]] 
+				- [x] 7.2.4.1.10. [[Receiving LGOOD_n (USB)]] 
+				- [x] 7.2.4.1.11. [[Receiving LCRD (USB)]] 
+				- [x] 7.2.4.1.12. [[receiving LBAD (USB)]] 
+				- [x] 7.2.4.1.13. [[transmitter timer (USB)]] 
+					- [x] [[PENDING_HP_TIMER (USB)]]
+					- [x] [[CREDIT_HP_TIMER (USB)]]
+			- [ ] 7.2.4.2. Link [[power management (USB)]] and Flow
+				- [x] 7.2.4.2.1. [[Power Management Link Timer (USB)]]s
+				- [x] 7.2.4.2.2. [[Low Power Link State Initiation (USB)]] 
+				- [ ] 7.2.4.2.3. [[U1-U2 entry flow]]
+				- [ ] 7.2.4.2.4. [[U3 entry flow]]
+				- [ ] 7.2.4.2.5. [[Concurrent link power link management flow (USB)]] 
+				- [ ] 7.2.4.2.6. [[Concurrent link power link management and Recovery flow]]
+				- [ ] 7.2.4.2.7. [[low power link state exit flow (USB)]] 
+	- [ ] 7.3. Link Error Rules/Recovery
+		- [ ] 7.3.1. Overview of Enhanced SuperSpeed Bit Errors
+		- [ ] 7.3.2. Link Error Types, Detection, and Recovery
+		- [ ] 7.3.3. Link Error Stastics
+			- [ ] 7.3.3.1. Link Error Count
+			- [ ] 7.3.3.2. Soft Error Count
+		- [ ] 7.3.4. Header Packet Errors
+			- [ ] 7.3.4.1. Packet Framing Error
+			- [ ] 7.3.4.2. Header Packet Error
+			- [ ] 7.3.4.3. Rx Header Sequence Number Error
+		- [ ] 7.3.5. Link Command Errors
+		- [ ] 7.3.6. ACK Tx Header Sequence Number Error
+		- [ ] 7.3.7. Header Sequence Number Advertisement Error
+		- [ ] 7.3.8. SuperSpeed Rx Header Buffer Credit Advertisement Error
+		- [ ] 7.3.9. SuperSpeedPlus Type 1/Type 2 Rx Buffer Credit Advertisement Error
+		- [ ] 7.3.10. Training Sequence Error
+		- [ ] 7.3.11. Gen 1 8b/10b Errors
+		- [ ] 7.3.12. Gen 2x1 Block Header Errors
+		- [ ] 7.3.13. Gen 2x2 Block Header Errors
+		- [ ] 7.3.14. Summary of Error Types and Recovery
+	- [ ] 7.4. PowerOn Reset and Inband Reset
+		- [ ] 7.4.1. PowerOn Reset
+		- [ ] 7.4.2. Inband Reset
+	- [ ] 7.5 Link Training and Status State Machine ([[LTSSM (USB)]])
+		- [x] 7.5.1. eSS.Disabled
+			[[eSS.Disabled]]
+			- [x] 7.5.1.1. eSS.Disabled for Downstream Ports and Hub Upstream Ports
+			- [x] 7.5.1.2. eSS.Disabled for Upstream Ports of Peripheral Devices
+		- [x] 7.5.2. eSS.Inactive
+			[[eSS.Inactive]] 
+			- [x] 7.5.2.1. eSS.Inactive Substate Machines
+			- [x] 7.5.2.2. eSS.Inactive Requirements
+			- [x] 7.5.2.3. [[eSS.Inactive.Quiet]]
+				- [x] 7.5.2.3.1. [[eSS.Inactive.Quiet Requirements]]
+				- [x] 7.5.2.3.2. [[eSS.Inactive.Quiet Exit Conditions]] 
+			- [x] 7.5.2.4. [[eSS.Inactive.Disconnect.Detect]] 
+				- [x] 7.5.2.4.1. [[eSS.Inactive.Disconnect.Detect Requirements]] 
+				- [x] 7.5.2.4.2. [[eSS.Inactive.Disconnect.Detect Exit Conditions]]
+		- [x] 7.5.3. Rx.Detect
+		- [[Rx.Detect]] 
+			- [x] 7.5.3.1. Rx.Detect Substate Machines
+			- [x] 7.5.3.2. Rx.Detect Requirements
+			- [x] 7.5.3.3. Rx.Detect.Reset
+			- [x] 7.5.3.4. Rx.Detect.Active
+			- [x] 7.5.3.5. Rx.Detect.Active Requirements
+			- [x] 7.5.3.6. Exit from Rx.Detect.Active
+			- [x] 7.5.3.7. Rx.Detect.Quiet 
+		- [x] 7.5.4. Polling
+		- [[LTSSM Polling (USB)]] 
+			- [x] 7.5.4.1. Polling Substate Machines
+			- [x] 7.5.4.2. Polling Requirements
+			- [x] 7.5.4.3. [[LTSSM Polling.LFPS]] 
+			- [x] 7.5.4.4. [[Polling.LFPSPlus]]
+			- [x] 7.5.4.5. [[Polling.PortMatch]]
+				- [x] 7.5.4.5.1. [[PHY Capability LBPM]] Definition, Rank, and Fallback 
+			- [ ] 7.5.4.6. [[Polling.PortConfig]]
+				- [/] Requirements 
+				- skipped Figure 7-20
+				- [x] Exit 
+			- [x] 7.5.4.7. [[Polling.RxEQ]] 
+			- [x] 7.5.4.8. [[Polling.Active (USB)]]
+			- [x] 7.5.4.9. [[Polling.Configuration (USB)]]
+			- [x] 7.5.4.10. [[Polling.Idle (USB)]]
+		- [x] 7.5.5. Compliance Mode
+		- [[Compliance Mode (USB)]]
+			- [x] 7.5.5.1. Compliance Mode Requirements
+			- [x] 7.5.5.2. Exit from Compliance Mode
+		- [x] 7.5.6. U0
+			- [x] 7.5.6.1. U0 Requirements
+			- [x] 7.5.6.2. Exit from U0
+		- [ ] 7.5.7. U1
+			- [ ] 7.5.7.1. Requirements
+			- [ ] 7.5.7.2. Exit
+		- [ ] 7.5.8. U2
+			- [ ] 7.5.8.1. Requirements
+			- [ ] 7.5.8.2. Exit
+		- [ ] 7.5.9. U3
+			- [ ] 7.5.9.1. Requirements
+			- [ ] 7.5.9.2. Exit
+		- [x] 7.5.10. Recovery [[LTSSM Recovery (USB)]] 
+			- everything but FSM figure done
+			- [x] 7.5.10.1. Substate Machines
+			- [x] 7.5.10.2. Requirements
+			- [x] 7.5.10.3. Recovery.Active [[Recovery.Active (USB)]]
+			- [x] 7.5.10.4. Recovery.Configuration [[Recovery.Configuration (USB)]]
+			- [x] 7.5.10.5. Recovery.Idle [[Recovery.Idle (USB)]] 
+			- [x] 7-25 figure
+		- [x] 7.5.11. [[Loopback Mode (USB)]]
+			- [x] 7.5.11.1. Substate Machines
+			- [x] 7.5.11.2. Requirements
+			- [x] 7.5.11.3. Loopback.Active
+			- [x] 7.5.11.4. Loopback.Exit
+		- [x] 7.5.12. [[Hot Reset (USB)]]
+			- [x] 7.5.12.1. Substate Machines
+			- [x] 7.5.12.2. Requriements
+			- [x] 7.5.12.3. Hot Reset.Active
+			- [x] 7.5.12.4. Hot Reset Exit
+- [ ] 8. Protocol Layer
+	- [ ] 8.1. Enhanced SuperSpeed Transactions
+		- [ ] 8.1.1. Transactions on SS Bus Instance
+		- [ ] 8.1.2. Transactions on SS+ Bus Instance
+			- [ ] 8.1.2.1. Simultaneous IN Transactions
+			- [ ] 8.1.2.2. Transaction Reordering
+	- [ ] 8.2. Packet Types
+	- [ ] 8.3. Packet Formats
+		- [ ] 8.3.1. Common Header Fields
+			- [ ] 8.3.1.1. Rsvd vals and rsvd field handling
+			- [ ] 8.3.1.2. type field
+			- [ ] 8.3.1.3. CRC-16
+			- [ ] 8.3.1.4. Link Control Word
+	- [ ] 8.4. Link Management Packet (LMP)
+		- [ ] 8.4.1. Subtype Field
+		- [ ] 8.4.2. Set Link Function
+		- [ ] 8.4.3. U2 Inactivity Timeout
+		- [ ] 8.4.4. Vendor Device Test
+		- [ ] 8.4.5. Port Capabilities
+		- [ ] 8.4.6. Port Configuration
+		- [ ] 8.4.7. Port Configuration Response
+		- [ ] 8.4.8. Precision Time Measurement
+			- [ ] 8.4.8.1. PTM Bus Interval Boundary Counters
+			- [ ] 8.4.8.2. LDM Protocol
+			- [ ] 8.4.8.3. LDM State Machines
+			- [ ] 8.4.8.4. LDM Link Delay
+			- [ ] 8.4.8.5. PTM Bus Interval Boundary Device Calculation
+			- [ ] 8.4.8.6. PTM Bus Interval Boundary Host Calculation
+			- [ ] 8.4.8.7. PTM Hub ITP Regeneration
+			- [ ] 8.4.8.8. Performance
+			- [ ] 8.4.8.9. LDM Rules
+			- [ ] 8.4.8.10. LDM and Hubs
+			- [ ] 8.4.8.11. Link Delay Measurement (LDM) LMP
+	- [ ] 8.5. Transaction Packet (TP)
+		- [ ] 8.5.1. Acknowledgement (ACK) Transaction Packet
+		- [ ] 8.5.2. Not Ready (NRDY) Transaction Packet
+		- [ ] 8.5.3. Endpoint Ready (ERDY) Transaction Packet
+		- [ ] 8.5.4. STATUS Transaction Packet
+		- [ ] 8.5.5. STALL Transaction Packet
+		- [ ] 8.5.6. Device Notification (DEV_NOTIFICATION) Transaction Packet
+			- [ ] 8.5.6.1. Function Wake Device Notification
+			- [ ] 8.5.6.2. Latency Tolerance Message (LTM) Device Notification
+			- [ ] 8.5.6.3. Bus Interval Adjustment Message Device Notification
+			- [ ] 8.5.6.4. Function Wake Notification
+			- [ ] 8.5.6.5. Latency Tolerance Messaging 
+			- [ ] 8.5.6.6. Bus Interval Adjustment Message
+			- [ ] 8.5.6.7. Sublinik Speed Device Notification
+		- [ ] 8.5.7. PING Transaction Packet
+		- [ ] 8.5.8. PING_RESPONSE Transaction Packet
+	- [ ] 8.6. Data Packet (DP)
+	- [ ] 8.7. Isochronous Timestamp Packet (ITP)
+	- [ ] 8.8. Addressing Triple
+	- [ ] 8.9. Route String Field
+		- [ ] 8.9.1. Route String Port Field
+		- [ ] 8.9.2. Route String Port Field Width
+		- [ ] 8.9.3. Port Number
+	- [ ] 8.10. Transaction Packet Usages
+		- [ ] 8.10.1. Flow Control Conditions
+		- [ ] 8.10.2. Burst Transactions
+			- [ ] 8.10.2.1. Enhanced SS Burst Transactions
+			- [ ] 8.10.2.2. SS+ Burst Transactions
+		- [ ] 8.10.3. Short Packets
+		- [ ] 8.10.4. SS+ Transaction Reordering
+	- [ ] 8.11. TP or DP Responses
+		- [ ] 8.11.1. Device Response to TP Requesting Data
+		- [ ] 8.11.2. Host Response to Data Received from a Device
+		- [ ] 8.11.3. Device Response to Data REceived from the Host
+		- [ ] 8.11.4. Device Response to a SETUP DP
+	- [ ] 8.12. TP Sequences
+		- [ ] 8.12.1. Bulk Transactions
+			- [ ] 8.12.1.1. State Machine Notation Information
+			- [ ] 8.12.1.2. Bulk IN Transactions
+			- [ ] 8.12.1.3. Bulk OUT Transactions
+			- [ ] 8.12.1.4. Bulk Streaming Protocol
+		- [ ] 8.12.2. Control Transfers
+			- [ ] 8.12.2.1. Reporting Status Results
+			- [ ] 8.12.2.2. Variable-length Data Stage
+			- [ ] 8.12.2.3. STALL TPs Returned by Control Pipes
+		- [ ] 8.12.3. Bus Interval and Service Interval
+		- [ ] 8.12.4. Interrupt Transactions
+			- [ ] 8.12.4.1. Interrupt IN Transactions
+			- [ ] 8.12.4.2. Interrupt OUT Transactions
+		- [ ] 8.12.5. Host Timing Information
+		- [ ] 8.12.6. Isochronous Transactions
+			- [ ] 8.12.6.1. Enhanced SS Isochronous Transactions
+			- [ ] 8.12.6.2. Host Flexibility in Performing SS Isochronous Transactions
+			- [ ] 8.12.6.3. SS+ Isochronous Transactions
+			- [ ] 8.12.6.4. Host Flexibility in Performing SS+ Iso Transactions
+			- [ ] 8.12.6.5. Device Response to Isochron IN Transactions
+			- [ ] 8.12.6.6. Host Processing of Isochron IN Transactions
+			- [ ] 8.12.6.7. Device Response to an Isochron OUT Data packet
+	- [ ] 8.13. Timing Parameters
+- [ ] 9. Device Framework
+	- [ ] 9.1. USB Device States
+		- [ ] 9.1.1. Visible Device States
+			- [ ] 9.1.1.1. Attached
+			- [ ] 9.1.1.2. Powered
+			- [ ] 9.1.1.3. Default
+			- [ ] 9.1.1.4. Address
+			- [ ] 9.1.1.5. Configured 
+			- [ ] 9.1.1.6. Suspended
+			- [ ] 9.1.1.7. Error
+		- [ ] 9.1.2. Bus Enumeration
+	- [ ] 9.2. Generic Device Operations
+		- [ ] 9.2.1. Dynamic Attachment and Removal
+		- [ ] 9.2.2. Address Assignment
+		- [ ] 9.2.3. Configuration
+		- [ ] 9.2.4. Data Transfer
+		- [ ] 9.2.5. Power Management
+			- [ ] 9.2.5.1. Power Budgeting
+			- [ ] 9.2.5.2. Changing Device Suspend State
+			- [ ] 9.2.5.3. Function Suspend
+			- [ ] 9.2.5.4. Changing Function Suspend State
+		- [ ] 9.2.6. Request Processing
+			- [ ] 9.2.6.1. Request Processing Timing
+			- [ ] 9.2.6.2. Reset/Resume Recovery Time
+			- [ ] 9.2.6.3. Set Address Processing
+			- [ ] 9.2.6.4. Standard Device Requests
+			- [ ] 9.2.6.5. Class-specific Requests
+			- [ ] 9.2.6.6. Speed Dependent Descriptors
+		- [ ] 9.2.7. Request Error
+	- [ ] 9.3. USB Device Requests
+		- [ ] 9.3.1. bmRequestType
+		- [ ] 9.3.2. bRequest
+		- [ ] 9.3.3. wValue
+		- [ ] 9.3.4. wIndex
+		- [ ] 9.3.5. wLength
+	- [ ] 9.4. Standard Device Requests
+		- [ ] 9.4.1. Clear Feature
+		- [ ] 9.4.2. Get Configuration
+		- [ ] 9.4.3. Get Descriptor
+		- [ ] 9.4.4. Get Interface
+		- [ ] 9.4.5. Get Status
+		- [ ] 9.4.6. Set Address
+		- [ ] 9.4.7. Set Configuration
+		- [ ] 9.4.8. Set Descriptor
+		- [ ] 9.4.9. Set Feature
+		- [ ] 9.4.10. Set Interface
+		- [ ] 9.4.11. Set Isochronous Delay
+		- [ ] 9.4.12. Set SEL
+		- [ ] 9.4.13. Synch Frame
+		- [ ] 9.4.14. Events and Their Effect on Device Parameters
+	- [ ] 9.5. Descriptors
+	- [ ] 9.6. Standard USB Descriptor Definitions
+		- [ ] 9.6.1. Device
+		- [ ] 9.6.2. Binary Device Object Store (BOS)
+			- [ ] 9.6.2.1. USB 2.0 Extension
+			- [ ] 9.6.2.2. SS USB Device Capability
+			- [ ] 9.6.2.3. Container ID
+			- [ ] 9.6.2.4. Platform Descriptor
+			- [ ] 9.6.2.5. SS+ USB Device Capability
+			- [ ] 9.6.2.6. Precision Time Measurement
+			- [ ] 9.6.2.7. Configuration Summary Descriptor
+		- [ ] 9.6.3. Configuration
+		- [ ] 9.6.4. Interface ASsociation
+		- [ ] 9.6.5. Interface 
+		- [ ] 9.6.6. Endpoint
+		- [ ] 9.6.7. SS Endpoint Companion
+		- [ ] 9.6.8. SS+ Isochronous Endpoint Companion
+		- [ ] 9.6.9. String
+	- [ ] 9.7. Device Class Definitions
+		- [ ] 9.7.1. Descriptors
+		- [ ] 9.7.2. Interfaces
+		- [ ] 9.7.3. Requests
+		- [ ] 9.7.4. Constants
+- [ ] 10. Hub, Host, Downstream Port, and Device Upstream Port Specification
+	- [ ] 10.1. Hub Feature Summary
+		- [ ] 10.1.1. Connecting to an Enhanced SS Capable Host
+		- [ ] 10.1.2. Connecting ot a USB 2.0 Host
+		- [ ] 10.1.3. Hub Connectivity
+			- [ ] 10.1.3.1. Routing Information
+			- [ ] 10.1.3.2. SS Hub Packet Signaling Connectivity
+			- [ ] 10.1.3.3. SS+ Hub Packet Routing
+		- [ ] 10.1.4. Resume Connectivity
+		- [ ] 10.1.5. Hub Fault Recovery Mechanisms
+		- [ ] 10.1.6. Hub Buffer Architecture
+			- [ ] 10.1.6.1. SS Hub Buffer Architecture
+			- [ ] 10.1.6.2. SS+ Hub Buffer Architecture
+	- [ ] 10.2. Hub Power Management
+		- [ ] 10.2.1. Link States
+		- [ ] 10.2.2. Hub Downstream Port U1/U2 Timers
+		- [ ] 10.2.3. Downstream/Upstream Port Link State Transitions
+	- [ ] 10.3. Hub Downstream Facing Ports
+		- [ ] 10.3.1. Hub Downstream Facing Port State Descriptions
+			- [ ] 10.3.1.1. DSPORT.Powered-off
+			- [ ] 10.3.1.2. DSPORT.Disconnected (Waiting for eSS Connect)
+			- [ ] 10.3.1.3. DSPORT.Training
+			- [ ] 10.3.1.4. DSPORT.ERROR
+			- [ ] 10.3.1.5. DSPORT.Enabled
+			- [ ] 10.3.1.6. DSPORT.Resetting
+			- [ ] 10.3.1.7. DSPORT.Compliance
+			- [ ] 10.3.1.8. DSPORT.Loopback
+			- [ ] 10.3.1.9. DSPORT.Disabled
+			- [ ] 10.3.1.10. DSPORT.Powered-off-detect
+			- [ ] 10.3.1.11. DSPORT.Powered-off-reset
+		- [ ] 10.3.2. Disconnect Detect Mechanism
+		- [ ] 10.3.3. Labeling
+	- [ ] 10.4. Hub Downstream Facing Port Power Management
+		- [ ] 10.4.1. Downstream Facing Port PM Timers
+		- [ ] 10.4.2. Hub Downstream Facing Port State Descriptions
+			- [ ] 10.4.2.1. Enabled U0 States
+			- [ ] 10.4.2.2. Attempt U0-U1 Transition 
+			- [ ] 10.4.2.3. Attempt U0-U2 Transition
+			- [ ] 10.4.2.4. Link in U1
+			- [ ] 10.4.2.5. Link in U2
+			- [ ] 10.4.2.6. Link in U3
+	- [ ] 10.5. SS Hub Header Packet Forwarding and Data Repeater
+		- [ ] 10.5.1. SS Hub Elasticity Buffer
+		- [ ] 10.5.2. SKP Ordered Sets
+		- [ ] 10.5.3. Interpacket Spacing
+		- [ ] 10.5.4. SS Header Packet Buffer Architecture
+		- [ ] 10.5.5. SS Packet Connectivity
+	- [ ] 10.6. SS+ Store and Forward Behavior
+		- [ ] 10.6.1. Hub Elasticity Buffer
+		- [ ] 10.6.2. SKP Ordered Sets
+		- [ ] 10.6.3. Interpacket Spacing
+		- [ ] 10.6.4. Upstream Flowing Buffering
+		- [ ] 10.6.5. Downstream Flowing Buffering
+		- [ ] 10.6.6. SS+ Hub Arbitration of Packets
+			- [ ] 10.6.6.1. Arbitration Weight
+			- [ ] 10.6.6.2. Direction Independent Packet Selection
+			- [ ] 10.6.6.3. Downstream Flowing Packet Reception and Selection
+			- [ ] 10.6.6.4. Upstream Flowing Packet Reception and Selection
+		- [ ] 10.6.7. SS+ Upstream Flowing Packet Modifications
+		- [ ] 10.6.8. SS+ Downstream Controller
+	- [ ] 10.7. Port State Machines
+		- [ ] 10.7.1. Port Transmit State Machine
+		- [ ] 10.7.2. Port Transmit State Descriptions
+			- [ ] 10.7.2.1. Tx IDLE
+			- [ ] 10.7.2.2. Tx Header
+			- [ ] 10.7.2.3. Tx Data
+			- [ ] 10.7.2.4. Tx Data Abort
+			- [ ] 10.7.2.5. Tx Link Command
+		- [ ] 10.7.3. Port Receive State Machine
+		- [ ] 10.7.4. Port Receive State Descriptions
+			- [ ] 10.7.4.1. Rx Default
+			- [ ] 10.7.4.2. Rx Data
+			- [ ] 10.7.4.3. Rx Header
+			- [ ] 10.7.4.4. Process Header Packet
+			- [ ] 10.7.4.5. Rx Link Command
+			- [ ] 10.7.4.6. Process Link Command
+	- [ ] 10.8. Suspend and Resume
+	- [ ] 10.9. Hub Upstream Port Reset Behavior
+	- [ ] 10.10. Hub Port Power Control
+		- [ ] 10.10.1. Multiple Gangs
+	- [ ] 10.11. Hub Controller
+		- [ ] 10.11.1. Endpoint Organization
+		- [ ] 10.11.2. Hub Information Architecture and Operation
+		- [ ] 10.11.3. Port Change Information Processing
+		- [ ] 10.11.4. Hub and Port Status Change Bitmap
+		- [ ] 10.11.5. Over-current Reporting and Recovery
+		- [ ] 10.11.6. Enumeration Handling
+	- [ ] 10.12. Hub Configuration
+	- [ ] 10.13. Descriptors
+		- [ ] 10.13.1. Standard Descriptors for Hub Class
+		- [ ] 10.13.2. Class-specific Descriptors
+			- [ ] 10.13.2.1. Hub Descriptor
+	- [ ] 10.14. Requests
+		- [ ] 10.14.1. Standard Requests
+		- [ ] 10.14.2. Class-specific Requests
+			- [ ] 10.14.2.1. Clear Hub Feature
+			- [ ] 10.14.2.2. Clear Port Feature
+			- [ ] 10.14.2.3. Get Hub Descriptor
+			- [ ] 10.14.2.4. Get Hub Status
+			- [ ] 10.14.2.5. Get Port Error Count
+			- [ ] 10.14.2.6. Get Port Status
+			- [ ] 10.14.2.7. Set Hub Descriptor
+			- [ ] 10.14.2.8. Set Hub Feature
+			- [ ] 10.14.2.9. Set Hub Depth
+			- [ ] 10.14.2.10. Set Port Feature
+	- [ ] 10.15. Host Root (Downstream) Ports
+	- [ ] 10.16. Peripheral Device Upstream Ports
+		- [ ] 10.16.1. Peripheral Device Upstream Ports
+		- [ ] 10.16.2. Peripheral Device Upstream Port State Machine
+			- [ ] 10.16.2.1. USDPORT.Powered-off
+			- [ ] 10.16.2.2. USDPORT.Powered on
+			- [ ] 10.16.2.3. USDPORT.Training
+			- [ ] 10.16.2.4. USDPORT.Connected/Enabled
+			- [ ] 10.16.2.5. USDPORT.Error
+			- [ ] 10.16.2.6. USDPORT.Disabled
+			- [ ] 10.16.2.7. USDPORT.Disabled_Error
+	- [ ] 10.17. Hub Chapter Parameters
+- [ ] 11 Interoperability and Power Delivery
+	- [ ] 11.1. USB 3.2 Host Support for USB 2.0
+	- [ ] 11.2. USB 3.2 Hub Support for USB 2.0
+	- [ ] 11.3. USB 3.2 Device Support for USB 2.0
+	- [ ] 11.4. Power Distribution
+		- [ ] 11.4.1. Classes of Devices and Connections
+			- [ ] 11.4.1.1. Self-Powered Hubs
+			- [ ] 11.4.1.2. Low-power Bus-powered Devices
+			- [ ] 11.4.1.3. High-power Bus-powered Devices
+			- [ ] 11.4.1.4. Self-powered Devices
+		- [ ] 11.4.2. Steady-State Voltage Drop Budget
+		- [ ] 11.4.3. Power Control During Suspend/Resume
+		- [ ] 11.4.4. Dynamic Attach and Detach
+			- [ ] 11.4.4.1. Inrush Current Limiting
+			- [ ] 11.4.4.2. Dynamic Detach
+		- [ ] 11.4.5. VBUS Electrical Characteristics
+- [ ] A. Gen 1 Symbol Encoding
+- [ ] B. Symbol Scrambling
+	- [ ] Data Scrambling
+- [ ] C. Power Management
+- [ ] D. Example Packets
+- [ ] E. Repeaters
+	- [ ] Overview
+		- [ ] Term def
+		- [ ] Scope of re-time connectivity and link delay budget
+			- [ ] retimer connectivity models
+			- [ ] Link delay budget requirement
+	- [ ] Re-timer architectural overview and requirement
+		- [ ] Architectural overview
+		- [ ] General REquirements
+			- [ ] Physical Layer REquirements
+			- [ ] Link Layer Requirements
+			- [ ] x2 Re-timer Requirements
+		- [ ] Re-timer Training and Status State Machine
+			- [ ] Warm Reset
+			- [ ] Rx.Detect
+				- [ ] Rx.Detect Requirements
+				- [ ] Exit from Rx.Detect
+			- [ ] eSS.Disabled
+				- [ ] eSS.Disabled REquirements
+				- [ ] Exit from eSS.Disabled
+			- [ ] Polling
+				- [ ] Polling.SpeedDetect
+				- [ ] Polling.PortConfig
+				- [ ] Polling.RxEQ
+				- [ ] Polling.TSx
+				- [ ] Polling.Idle
+			- [ ] Compliance Mode
+				- [ ] Compliance Mode Requirements
+				- [ ] Exit from Compliance Mode
+			- [ ] BLR Compliance Mode
+				- [ ] BLR Compliance Mode Requirements
+				- [ ] Exit from BLR Compliance MOde
+			- [ ] U0 
+				- [ ] U0 Requirements
+				- [ ] Exit from U0
+			- [ ] U1
+				- [ ] U1 Requirements
+				- [ ] Exit from U1
+			- [ ] U2
+				- [ ] U2 Requirements
+				- [ ] Exit from U2
+			- [ ] U3
+				- [ ] U3 Requirements
+				- [ ] Exit from U3
+			- [ ] Recovery
+				- [ ] Exit from REcovery.TSx
+				- [ ] Recovery.TSx
+				- [ ] Recovery.Idle
+			- [ ] Passthrough Loopback
+				- [ ] PassThrough Loopback Requirements
+				- [ ] Exit from PassThrough Loopback
+			- [ ] Local Loopback
+				- [ ] Local Loopback Requirements
+				- [ ] Exit from Local Loopback.Active
+				- [ ] Exit from Local Loopback.Exit
+			- [ ] Hot Reset
+				- [ ] Hot Reset Requirements
+				- [ ] Exit from Hot Reset
+		- [ ] SRIS Re-timer Clock Offset Compensation
+			- [ ] Gen 1x1 Operation
+			- [ ] Gen 1x2 Operation
+			- [ ] Gen 2 Operation
+		- [ ] Bit-Level Re-timer Jitter Transfer Function
+		- [ ] Compliance
+			- [ ] Host and Device Product Compliance
+			- [ ] Component-Level Re-timer compliance
+- [x] Todo for zettel figures 
+- [ ] Figures
+	- [x] 2-1. port and link pictorial
+	- still a little #unclear, but perhaps need to see [[SSIC]] 
+	- [ ] 3-1. USB 3.2 Dual Bus System Architecture
+	- [ ] 3-2. USB 3.2 Terminology Reference Model
+	- [ ] 3-3. Enhanced SS Bus Communications Layers and Power Management Elements
+	- [ ] 3-4. Examples of Supported USB 3.2 USB Physical Device Topologies 
+	- [ ] 3-5. SS Only Enhanced SS Peripheral Device Configuration 
+	- [ ] 3-6. Enhanced SS Device Configuration
+	- [ ] 3-7. Multiple SS Bus Instances in an Enhanced SS System
+	- [ ] 4-1. Enhanced SS IN Transaction Protocol
+	- [ ] 4-2. Enhanced SS OUT Transaction Protocol
+	- [ ] 4-3. Enhanced SS IN Stream Example
+	- [ ] 6-1. SS Physical Layer
+	- [ ] 6-2. Transmitter Block Diagram
+	- [ ] 6-3. Gen 1 Receiver Block Diagram
+	- [ ] 6-4. Gen 2 Receiver Block Diagram
+	- [ ] 6-5. Channel Models
+	- [ ] 6-6. Electrical Test Points
+	- [ ] 6-7. Character to Symbol Mapping
+	- [ ] 6-8. Bit Transmission Order
+	- [ ] 6-9. LFSR with Scrambling Polynomial
+	- [ ] 6-10. Gen 2 Serialization and Deserialization Order
+	- [ ] 6-11. Gen 2 Bit Transmission Order and Framing
+	- [ ] 6-12. LFSR for use in Gen 2 operation
+	- [ ] 6-13. Jitter Filtering - "Golden PLL" and Jitter Transfer Functions
+	- [ ] 6-14. "Golden PLL" and Jitter Transfer Functions for Gen 1 Operation
+	- [ ] 6-15. "Golden PLL" and Jitter Transfer Functions for Gen 2 Operation
+	- [ ] 6-16. Example of Period Modulation from Trangular SSC
+	- [ ] 6-17. Eye Masks
+	- [ ] 6-18. Single-ended and Differential Voltage Levels
+	- [ ] 6-19. Device Termination Schematic
+	- [ ] 6-20. Tx Normative Setup with Reference Channel
+	- [ ] 6-21. De-Emphasis Waveform
+	- [ ] 6-22. 3-tap Transmit Equalizer Structure
+	- [ ] 6-23. Example Output Waveform for 3-tap Transmit Equalizer
+	- [ ] 6-24. Configuration for Measuring Transmitter Equalization
+	- [ ] 6-25. Example waveforms for measuring transmitter equalization
+	- [ ] 6-26. Frequency Spectrum of TSEQ
+	- [ ] 6-27. Gen 1 Tx Compliance Rx EQ Transfer Function
+	- [ ] 6-28. Gen 2 Compliance Rx EQ Transfer Function
+	- [ ] 6-29. Gen 2 reference DFE Function
+	- [ ] 6-30. Rx Jitter Tolerance Setup
+	- [ ] 6-31. Jitter Tolerance Curve
+	- [ ] 6-32. LFPS Signaling
+	- [ ] 6-33. U1 Exit, U2 Exit, and U3 Wakeup LFPS Handshake Timing Diagram
+	- [ ] 6-34. Example of warm Reset Out of U3
+	- [ ] 6-35. Example of Binary Representation based on Polling.LFPS
+	- [ ] 6-36. SCD1/SCD2 transmission
+	- [ ] 6-37. Logic Representation of LBPS
+	- [ ] 6-38. LBPM Transmission Examples
+	- [ ] 6-39. Rx Detect Schematic
+	- [ ] 6-40. Transmitter Data Striping Example
+	- [ ] 7-1. Link Layer
+	- [ ] 7-2. Byte Ordering
+	- [ ] 7-3. Header Packet with HPSTART, Packet Header, and Link Control Word
+	- [ ] 7-4. Non-deferred Gen 2 DPH Format
+	- [ ] 7-5. Packet Header
+	- [ ] 7-6. CRC-16 Remainder Generation
+	- [ ] 7-7. Link Control Word
+	- [ ] 7-8. CRC-5 Remainder Generation
+	- [ ] 7-9. Data Packet Payload with CRC-32 and Framing
+	- [ ] 7-10. CRC-32 Remainder Generation
+	- [ ] 7-11. Data Packet with Data Packet Header Followed by Data Packet Payload
+	- [ ] 7-12. Link Command Structure
+	- [ ] 7-13. Link Command Word Structure
+	- [ ] 7-14. State Diagram of the Link Training and Status State Machine
+	- [ ] 7-15. eSS.Disabled Substate Machine
+	- [ ] 7-16. eSS.Inactive Substate Machine
+	- [ ] 7-17. Rx.Detect Substate Machine
+	- [ ] 7-18. Example Timing Diagrams of a SSP Port Switching to SS Operation
+	- [ ] 7-19. Example Timing Diagrams of a SSP Port Switching to SS Operation in Polling.LFPSPlus
+	- [ ] 7-20. Example Timing Diagrams of Two Ports in x2 Operation
+	- [ ] 7-21. Polling Substate Machine
+	- [ ] 7-22. U1
+	- [ ] 7-23. U2
+	- [ ] 7-24. U3
+	- [ ] 7-25. Recovery Substate Machine
+	- [ ] 7-26. Loopback Substate Machine
+	- [ ] 7-27. Hot Reset Substate Machine
+	- [ ] 8-1. Protocol Layer Highlighted
+	- [ ] 8-2. Example Transaction Packet
+	- [ ] 8-3. Link Control Word Detail
+	- [ ] 8-4. Link Management Packet Structure
+	- [ ] 8-5. Set Link Function LMP
+	- [ ] 8-6. U2 Inactivity Timeout LMP
+	- [ ] 8-7. Vendor Device Test LMP
+	- [ ] 8-8. Port Capability LMP
+	- [ ] 8-9. Port Configuration LMP
+	- [ ] 8-10. Port Configuration Response LMP
+	- [ ] 8-11. Link Delay Measurement Protocol 
+	- [ ] 8-12. PTMP ITP Protocol
+	- [ ] 8-13. LDM State Machine Notation
+	- [ ] 8-14. LDM Requester State Machine
+	- [ ] 8-15. LDM Response State Machine
+	- [ ] 8-16. PTM Path Performance Contributors 
+	- [ ] 8-17. LDM LMP 
+	- [ ] 8-18. ACK Transaction Packet
+	- [ ] 8-19. NRDY Transaction Packet
+	- [ ] 8-20. ERDY Transaction Packet
+	- [ ] 8-21. STATUS Transaction Packet
+	- [ ] 8-22. STALL Transaction Packet
+	- [ ] 8-23. Device Notification Transaction Packet
+	- [ ] 8-24. Function Wake Device Notification
+	- [ ] 8-25. Latency Tolerance Message Device Notification
+	- [ ] 8-26. Bus Interval Adjustment Message Device Notifiation
+	- [ ] 8-27. Sublink Speed Device Notification
+	- [ ] 8-28 PING Transaction Packet
+	- [ ] 8-29. PING_RESPONSE Transaction Packet
+	- [ ] 8-30. Example Data Packet
+	- [ ] 8-31. Isochronous Timestamp Packet
+	- [ ] 8-32. Route String Detail
+	- [ ] 8-33. Sample Concurrent BULK IN Transactions
+	- [ ] 8-34. Sample Concurrent BULK and Isochronous IN Transactions
+	- [ ] 8-35. Legend for State Machines
+	- [ ] 8-36. Sample BULK IN Sequence 
+	- [ ] 8-37. Sample BULK OUT Sequence
+	- [ ] 8-38. General Stream Protocol State Machine (SPSM)
+	- [ ] 8-39. Device IN Stream Protocol State Machine (DISPSM)
+	- [ ] 8-40. Device IN Move Data State Machine (DIMDSM)
+	- [ ] 8-41. Device OUT Stream Protocol State Machine (DOSPSM)
+	- [ ] 8-42. Device OUT Move Data State Machine (DOMDSM)
+	- [ ] 8-43. Host IN Stream Protocol State Machine (HISPSM)
+	- [ ] 8-44. Host IN Move Data State Machine (HIMDSM)
+	- [ ] 8-45. Host OUT Stream Protocol State Machine (HOSPSM)
+	- [ ] 8-46. Host OUT Move Data State Machine (HOMDSM)
+	- [ ] 8-47. Control Read Sequence
+	- [ ] 8-48. Control Write Sequence
+	- [ ] 8-49. Host Sends Interrupt IN Transaction in Each Service Interval
+	- [ ] 8-50. Host Stops Servicing Interrupt IN Transaction Once NRDY is Received
+	- [ ] 8-51. Host Resumes IN Transaction after Device Sent ERDY
+	- [ ] 8-52. Endpoint Sends STALL TP
+	- [ ] 8-53. Host Detects Error in Data and Device Resends Data
+	- [ ] 8-54. Host Sends Interrupt OUT Transaction in Each Service Interval
+	- [ ] 8-55. Host Stops Servicing Interrupt OUT Transaction Once NRDY is Received
+	- [ ] 8-56. Host Resumes Sending Interrupt OUT Transaction After Device Sent ERDY
+	- [ ] 8-57. Device Detects Error in Data and Host Resends Data
+	- [ ] 8-58. Endpoint Sends STALL TP
+	- [ ] 8-59. Multiple Active Isochronous Endpoints with Aligned Service Interval Boundaries
+	- [ ] 8-60. Enhanced SS Isochronous IN Transaction Format
+	- [ ] 8-61. Enhanced SS Isochronous OUT Transaction Format
+	- [ ] 8-62. Sample Enhanced SS Isochronous IN Transaction 
+	- [ ] 8-63. Sample Enhanced SS Isochronous OUT Transaction
+	- [ ] 8-64. Sample Enhanced SS Isochronous  IN Transaction
+	- [ ] 8-65. Sample Enhanced SS Isochronous OUT Transaction
+	- [ ] 8-66. Sample Smart Enhanced SS Isochronous IN Transaction
+	- [ ] 8-67. Sample Smart Enhanced SS Isochronous OUT Transaction
+	- [ ] 8-68. Sample Pipeline Isochronous IN Transactions
+	- [ ] 9-1. Peripheral State Diagram and Hub State Diagram (Enhanced SS Portion Only)
+	- [ ] 9-2. wIndex Format when Specifying an Endpoint
+	- [ ] 9-3. wIndex Format when Specifying an Interface
+	- [ ] 9-4. Information Returned by a Standard GetStatus() Request to a Device
+	- [ ] 9-5. Information Returned by a Standard GetStatus() Request to an Interface
+	- [ ] 9-6. Information Returned by a Standard GetStatus() Request to an Endpoint
+	- [ ] 9-7. Information Returned by a PTM GetStatus() Request to an Endpoint
+	- [ ] 9-8. Example of Feedback Endpoint Relationships
+	- [ ] 10-1. USB Hub Architecture
+	- [ ] 10-2. SS Portion of the USB Hub Architecture
+	- [ ] 10-3. SS+ Portion of the Hub Architecture
+	- [ ] 10-4. Simple USB Topology 
+	- [ ] 10-5. Route String Example 
+	- [ ] 10-6. SS Hub Signaling Connectivity 
+	- [ ] 10-7. Resume Connectivity 
+	- [ ] 10-8. Typical SS Hub Header Packet Buffer Architecture
+	- [ ] 10-9. SS Hub Data Buffer Traffic (Header Packet Buffer Only Shown for DS Port 1)
+	- [ ] 10-10. Downstream Facing Hub Port State Machine
+	- [ ] 10-11. Downstream Facing Hub Port Power Management State Machine
+	- [ ] 10-12. Upstream Facing Hub Port State Machine 
+	- [ ] 10-13. Hub Connect (HCONNECT) State Machine
+	- [ ] 10-14. Upstream Facing Hub Port Power Management State Machine
+	- [ ] 10-15. Example SS Hub Header Packet Buffer Architecture - Downstream Traffic
+	- [ ] 10-16. Example SS Hub Header Packet Buffer Architecture - Upstream Traffic
+	- [ ] 10-17. Logical Representation of Upstream Flowing Buffers
+	- [ ] 10-18. Logical Representation of Downstream Flowing Buffers
+	- [ ] 10-19. Port Transmit State Machine
+	- [ ] 10-20. Upstream Facing Port Rx State Machine
+	- [ ] 10-21. Example Hub Controller Organization
+	- [ ] 10-22. Relationship of Status, Status Change, and Control Information to Device States
+	- [ ] 10-23. Port Status Handling Method
+	- [ ] 10-24. Hub and Port Status Change Bitmap
+	- [ ] 10-25. Example Hub and Port Change Bit Sampling
+	- [ ] 10-26. Peripheral Upstream Device Port State Machine
+	- [ ] 11-1. Compound Self-powered Hub
+	- [ ] 11-2. Low-power Bus-powered Function
+	- [ ] 11-3. High-power Bus-powered Function
+	- [ ] 11-4. Self-powered Funciton
+	- [ ] 11-5. Worst-case System Equivalent Resistance
+	- [ ] 11-6. Typical Suspend Current Averaging Profile
+	- [ ] D-1. Sample ERDY Transaction Packet
+	- [ ] D-2. Sample Data Packet
+	- [ ] D-3. Example placement of Gen 2 SKP Block, Idle Symbols, Link Command and Header Packet
+	- [ ] D-4. Example placement of Gen 2 Data Packets and Idle Symbols
+	- [ ] E-1. Link Segment Definition
+	- [ ] E-2. Example Link Configuration of a 3-$\mu$s Host with a 10-$\mu$s Device
+	- [ ] E-3. Example Link Configuration of a 10-$\mu$s Host with a 10-$\mu$s Device
+	- [ ] E-4. Link Delay Budget in a 3 re-timer Connectivity Model
+	- [ ] E-5. Example Re-timer Arcitectures
+	- [ ] E-6. Re-timer Training and Status State Machine
+	- [ ] E-7. Polling Substate Machine
+	- [ ] E-8. Illustration of Re-timer Presence Announcement
+	- [ ] E-9. Sequential Bit-Level Re-timer Clock Switching
+	- [ ] E-10. Sequential Bit-Level Re-timer clock Switching Based on TS1A OS and TS1B OS
+	- [ ] E-11. Example of Four Bit Level Re-timer Performing Sequential Clock Switching
+	- [ ] E-12. Standalone Bit-Level Re-timer Compliance Test Setup
+	- [ ] E-13. Recovery Substate Machine
+	- [ ] E-14. Example Block Diagram of a Re-timer Operating in Gen 2 Mode
+	- [ ] E-15. Block Diagram for Example Bit-Level Re-timer Clocking Architecture
+	- [ ] E-16. Jitter Transfer Illustration
+	- [ ] E-17. Jitter Transfer Reference Curves
+- [x]  Todo for zettel tables 
+- [ ] Tables
+	- [ ] 3-1. Comparing Enhanced SS Bus to USB 2.0 Bus
+	- [ ] 5-1. USB Connectors Applicability to USB 3.2
+	- [ ] 5-2. Standard USB Cables Applicability to USB 3.2
+	- [ ] 5-3. Standard USB Adapter Assemblies Applicability to USB 3.2
+	- [ ] 6-1. Electrical Test Points
+	- [x] 6-2. Special Symbols
+	- [x] 6-3. Gen 1 TSEQ Ordered Set
+	- [x] 6-4. Gen 1 TS1 Ordered Set
+	- [x] 6-5. Gen 1 TS2 Ordered Set
+	- [x] 6-6 Gen 1/Gen 2 Link Configuration
+	- [x] 6-7. Gen 2 TS1 Ordered Set
+	- [x] 6-8. Gen 2 TS2 Ordered Set
+	- [x] 6-9. Gen 2 TSEQ Ordered Set
+	- [x] 6-10. Gen 2 SYNC Ordered Set
+	- [ ] 6-11. SDS Ordered Set
+	- [ ] 6-12. Gen 1 SKP Ordered Set Structure
+	- [ ] 6-13. Gen 2 SKP Ordered Set
+	- [ ] 6-14. Compliance Pattern Sequences
+	- [ ] 6-15. Gen 2 Compliance Pattern
+	- [ ] 6-16. Informative Jitter Budgeting at the Silicon Pads
+	- [ ] 6-17. SSC Parameters
+	- [ ] 6-18. Transmitter Normative Electrical Parameters
+	- [ ] 6-19. Transmitter Informative Electrical Parameters at TP1 
+	- [ ] 6-20. Normative Transmitter Eye Mask at Test Point TP4
+	- [ ] 6-21. Gen 2 Transmitter Equalization Settings
+	- [ ] 6-22. Receiver Normative Electrical Patterns
+	- [ ] 6-23. Receiver Informative Electrical Parameters
+	- [ ] 6-24. BRST
+	- [ ] 6-25. BDAT
+	- [ ] 6-26. BERC
+	- [ ] 6-27. BCNT
+	- [ ] 6-28. Input Jitter Reqirements for Rx Tolerance Testing
+	- [ ] 6-29. Normative LFPS Electrical Specification
+	- [ ] 6-30. LFPS Transmitter Timing for SuperSpeed Designs
+	- [ ] 6-31. LFPS Handshake Timing for U1/U2 Exit, Loopback Exit, and U3 Wakeup
+	- [ ] 6-32. Binary Representation of Polling.LFPS
+	- [ ] 6-33. LBPS Transmit and Receive Specification
+	- [ ] 6-34. Lane-to-Lane Skew Requirements
+	- [ ] 7-1. CRC-16 Mapping
+	- [ ] 7-2. CRC-32 Mapping
+	- [ ] 7-3. Link Command Ordered Set Structure
+	- [ ] 7-4. Link Command Bit Definitions
+	- [ ] 7-5. Link Command Definitions
+	- [ ] 7-6. Logical Idle Definition
+	- [ ] 7-7. Transmitter Timers Summary
+	- [ ] 7-8. Link Flow Control Timers Summary
+	- [ ] 7-9. Valid Packet Framing Symbol Order (Sx is One of SHP, DPHP, SDP, END or EDB)
+	- [ ] 7-10. Valid Link Command Symbol Order
+	- [ ] 7-11. Error Types and Recovery
+	- [ ] 7-12. LTSSM State Transition Timeouts
+	- [ ] 7-13. PHY LBPM Definition
+	- [ ] 7-14. Start-up PHY Capability Match
+	- [ ] 7-15. Gen 2x2 PHY Capability Fallback Order
+	- [ ] 8-1. Type Field Description
+	- [ ] 8-2. Link Control Word Format
+	- [ ] 8-3. Link Management Packet Subtype Field
+	- [ ] 8-4. Set Link Function
+	- [ ] 8-5. U2 Inactivity Timer Functionality
+	- [ ] 8-6. Vendor-specific Device Test Function
+	- [ ] 8-7. Port Capability LMP Format
+	- [ ] 8-8. Port Type Selection Matrix
+	- [ ] 8-9. Port Configuration LMP Format (Differences with Port Capability LMP)
+	- [ ] 8-10. Port Configuration Response LMP Format (Differences with Port Capability LMP)
+	- [ ] 8-11. LDM LMP
+	- [ ] 8-12. Transaction Packet Subtype Field
+	- [ ] 8-13. ACK TP Format
+	- [ ] 8-14. NRDY TP Format (Differences with ACK TP)
+	- [ ] 8-15. ERDY TP Format (Differences iwth ACK TP)
+	- [ ] 8-16. STATUS TP Format (Differences with ACK TP)
+	- [ ] 8-17. STALL TP Format (Differences with ACK TP)
+	- [ ] 8-18. Device Notification TP Format (Differences with ACK TP)
+	- [ ] 8-19. Function Wake Device Notification
+	- [ ] 8-20. Latency Tolerance Message Device Notificaiton
+	- [ ] 8-21. Bus Interval Adjustment Message Device Notifcation
+	- [ ] 8-22. Sublink Speed Device Notificaiton
+	- [ ] 8-23. PING TP Format (differences with ACK TP)
+	- [ ] 8-24. PING_RESPONSE TP Format (Differences with ACK TP)
+	- [ ] 8-25. Data Packet Format (Differences with ACK TP)
+	- [ ] 8-26. Isochronous Timestamp Packet Format
+	- [ ] 8-27. Device Responses to TP Requesting Data (Bulk, Control, and Interrupt Endpoints)
+	- [ ] 8-28. Host Responses to Data Received from a Device (Bulk, Control, and Interrupt Endpoints)
+	- [ ] 8-29. Device Respones to OUT Transactions (Bulk, Control, and Interrupt Endpoints)
+	- [ ] 8-30. Device Responses to SETUP Transactions (Only for Control Endpoints)
+	- [ ] 8-31. Status Stage Responses
+	- [ ] 8-32. ACK TP and DPs for Pipelined Isochronous IN Transactions
+	- [ ] 8-33. Device Responses to Isochronous IN Transactions
+	- [ ] 8-34. Host Responses to IN Transactions
+	- [ ] 8-35. Device Responses to OUT Data Packets
+	- [ ] 8-36. Timing Parameters
+	- [ ] 9-1. Visible Enhanced SS Device States
+	- [ ] 9-2. Preserved USB Suspend State Parameters
+	- [ ] 9-3. Format of Setup Data
+	- [ ] 9-4. Standard Device Requests
+	- [ ] 9-5. Standard Request Codes
+	- [ ] 9-6. Descriptor Types
+	- [ ] 9-7. Standard Feature Selectors
+	- [ ] 9-8. Standard Status Type Codes
+	- [ ] 9-9. Suspend Options
+	- [ ] 9-10. Device Parameters and Events
+	- [ ] 9-11. Standard Device Descriptor
+	- [ ] 9-12. BOS Descriptor
+	- [ ] 9-13. Format of a Device Capability Descriptor
+	- [ ] 9-14. Device Capability Type Codes
+	- [ ] 9-15. USB 2.0 Extension Descriptor
+	- [ ] 9-16. SS Device Capability Descriptor
+	- [ ] 9-17. Container ID Descriptor
+	- [ ] 9-18. Platform Descriptor
+	- [ ] 9-19. SS+ Descriptor
+	- [ ] 9-20. PTM Capability Descriptor
+	- [ ] 9-21. Configuration Summary Descriptor
+	- [ ] 9-22. Standard Configuration Descriptor
+	- [ ] 9-23. Standard Interface Association Descriptor
+	- [ ] 9-24. Standard Interface Descriptor
+	- [ ] 9-25. Standard [[Endpoint Descriptor (USB)]] 
+	- [ ] 9-26. Example of Feedback Endpoint Numbers
+	- [ ] 9-27. SS Endpoint Companion Descriptor
+	- [ ] 9-28. SS+ Isochronous Endpoint Companion Descriptor
+	- [ ] 9-29. String Descriptor Zero, Specifying Languages Supported by the Device
+	- [ ] 9-30. UNICODE String Descriptor
+	- [ ] 9-31. Constants
+	- [ ] 10-1. Downstream Facing Hub Port State Machine Diagram Legend
+	- [ ] 10-2. Downstream USB Standard-A Port $V_{BUS}$  requirements
+	- [ ] 10-3. Downstream Flowing Header Packet Processing Actions
+	- [ ] 10-4. Hub Power Operating Mode Summary
+	- [ ] 10-5. Enhanced SS Hub Descriptor
+	- [ ] 10-6. Hub Responses to Standard Device Requests
+	- [ ] 10-7. Hub Class Requests
+	- [ ] 10-8. Hub Class Request Codes
+	- [ ] 10-9. Hub Class Feature Selectors
+	- [ ] 10-10. Hub Status Field, *wHubStatus*
+	- [ ] 10-11. Hub Change Field, _wHubChange_
+	- [ ] 10-12. Port Status Type Codes  
+	- [ ] 10-13. Port Status Field, _wPortStatus_
+	- [ ] 10-14. Port Change Field _wPortChange_
+	- [ ] 10-15. Extended Port Status Field, _dwExtPortStatus_
+	- [ ] 10-16. U1 Timeout Value Encoding
+	- [ ] 10-17. U2 Timeout Value Encoding
+	- [ ] 10-18. Downstream Port Remote Wake Mask Encoding
+	- [ ] 10-19. Hub Parameters
+	- [ ] 11-1. USB 3.2 and USB 2.0 Interoperability 
+	- [ ] 11-2. DC Electrical Characteristics
+	- [ ] A-1. 8b/10b/ Data Symbol Codes
+	- [ ] A-2. 8b/10b Special Character Symbol Codes
+	- [ ] E-1. Gen 1 TS1A Ordered Set (TS1A OS)
+	- [ ] E-2. Gen 1 TS1B Ordered Set (TS1B OS)
+	- [ ] E-3. Bit-Level Re-timer Jitter Transfer Function Requirements
+
+
